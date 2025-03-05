@@ -1,0 +1,6 @@
+@TrustedWinner.Api_HostAddress = http://localhost:5064
+
+GET {{TrustedWinner.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

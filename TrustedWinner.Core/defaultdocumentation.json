@@ -1,0 +1,8 @@
+{
+    "OutputDirectoryPath": "docs",
+    "GeneratedPages": 1,
+    "FileNameMode": "Name",
+    "LinksOutputFormat": "MarkdownLink",
+    "IncludeUndocumentedItems": true,
+    "GeneratedAccessModifiers": "Public"
+}
