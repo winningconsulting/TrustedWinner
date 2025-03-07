@@ -32,11 +32,8 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Ensure database is created and migrations are applied
 using (var scope = app.Services.CreateScope())
@@ -52,8 +49,18 @@ app.UseHsts(); // Add HTTP Strict Transport Security
 // Use CORS
 app.UseCors("AllowConfiguredOrigins");
 
+// Use static files
+app.UseStaticFiles();
+
+// Use default files (index.html)
+app.UseDefaultFiles();
+
 app.UseAuthorization();
 
+// Map API controllers
 app.MapControllers();
+
+// Serve index.html for all non-API routes
+app.MapFallbackToFile("index.html");
 
 app.Run();
