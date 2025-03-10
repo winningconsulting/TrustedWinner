@@ -422,6 +422,87 @@ public static string Version { get; }
 [System.InvalidOperationException](https://docs.microsoft.com/en-us/dotnet/api/System.InvalidOperationException 'System.InvalidOperationException')  
 Thrown when the version cannot be retrieved from the assembly.
 
+<a name='TrustedWinner.Core.ResultSigner'></a>
+
+## ResultSigner Class
+
+Handles signing and verification of draw results using X.509 certificates.
+
+```csharp
+public class ResultSigner
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ResultSigner
+### Methods
+
+<a name='TrustedWinner.Core.ResultSigner.SignResults(string[][],System.Security.Cryptography.X509Certificates.X509Certificate2)'></a>
+
+## ResultSigner.SignResults(string[][], X509Certificate2) Method
+
+Signs the provided results array using the given certificate.
+
+```csharp
+public static string SignResults(string[][] results, System.Security.Cryptography.X509Certificates.X509Certificate2 signingCertificate);
+```
+#### Parameters
+
+<a name='TrustedWinner.Core.ResultSigner.SignResults(string[][],System.Security.Cryptography.X509Certificates.X509Certificate2).results'></a>
+
+`results` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+The results array to sign.
+
+<a name='TrustedWinner.Core.ResultSigner.SignResults(string[][],System.Security.Cryptography.X509Certificates.X509Certificate2).signingCertificate'></a>
+
+`signingCertificate` [System.Security.Cryptography.X509Certificates.X509Certificate2](https://docs.microsoft.com/en-us/dotnet/api/System.Security.Cryptography.X509Certificates.X509Certificate2 'System.Security.Cryptography.X509Certificates.X509Certificate2')
+
+The certificate to use for signing.
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The Base64-encoded signature.
+
+#### Exceptions
+
+[System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  
+Thrown when results or signingCertificate is null.
+
+[System.InvalidOperationException](https://docs.microsoft.com/en-us/dotnet/api/System.InvalidOperationException 'System.InvalidOperationException')  
+Thrown when the certificate doesn't have a private key.
+
+<a name='TrustedWinner.Core.ResultSigner.VerifySignature(string[][],string,string)'></a>
+
+## ResultSigner.VerifySignature(string[][], string, string) Method
+
+Verifies the signature of the provided results using the given certificate.
+
+```csharp
+public static bool VerifySignature(string[][] results, string signature, string certificatePem);
+```
+#### Parameters
+
+<a name='TrustedWinner.Core.ResultSigner.VerifySignature(string[][],string,string).results'></a>
+
+`results` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+The results array that was signed.
+
+<a name='TrustedWinner.Core.ResultSigner.VerifySignature(string[][],string,string).signature'></a>
+
+`signature` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The Base64-encoded signature to verify.
+
+<a name='TrustedWinner.Core.ResultSigner.VerifySignature(string[][],string,string).certificatePem'></a>
+
+`certificatePem` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The PEM-encoded certificate used for signing.
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+True if the signature is valid, false otherwise.
+
 <a name='TrustedWinner.Core.SeedGenerator'></a>
 
 ## SeedGenerator Class

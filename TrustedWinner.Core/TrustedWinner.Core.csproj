@@ -9,7 +9,7 @@
     <Description>Trusted Winner is a fair random draw winner selector with auditable results</Description>
     <Company>Winning Lda.</Company>
     <Copyright>Copyright © Winning 2025</Copyright>
-    <Version>2.0.2</Version>
+    <Version>2.1.0</Version>
     <Authors>luisfaceira_winning</Authors>
     <PackageTags>fair random draw, winner selector, auditable results, trusted winner, winning consulting</PackageTags>
     <RepositoryUrl>https://github.com/winningconsulting/TrustedWinner</RepositoryUrl>

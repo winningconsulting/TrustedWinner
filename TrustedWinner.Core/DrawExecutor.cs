@@ -141,24 +141,7 @@ public class DrawExecutor
 
     private static string SignSelectedEntries(string[][] results, X509Certificate2 signingCertificate)
     {
-        // Create a copy of the entries without signature for signing
-        var resultsAsJson = JsonSerializer.Serialize(results, DrawResult.SerializerOptions);
-
-        // Sign the JSON
-        using var rsa = signingCertificate.GetRSAPrivateKey();
-        if (rsa == null)
-        {
-            throw new InvalidOperationException("The provided certificate does not have a private key suitable for signing.");
-        }
-
-        var signature = rsa.SignData(
-            System.Text.Encoding.UTF8.GetBytes(resultsAsJson),
-            HashAlgorithmName.SHA256,
-            RSASignaturePadding.Pkcs1);
-
-        var signatureBase64 = Convert.ToBase64String(signature);
-
-        return signatureBase64;
+        return ResultSigner.SignResults(results, signingCertificate);
     }
 
     private static void ValidateEntries(string[] entries)

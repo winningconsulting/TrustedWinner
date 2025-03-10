@@ -58,26 +58,10 @@ public class DrawVerifier
     {
         try
         {
-            // Serialize the entries result to verify
-            var jsonToVerify = JsonSerializer.Serialize(drawResultToVerify.Results, DrawResult.SerializerOptions);
-
-            // Import the certificate
-            var certificate = X509Certificate2.CreateFromPem(drawResultToVerify.Certificate);
-
-            // Get the public key
-            using var rsa = certificate.GetRSAPublicKey();
-            if (rsa == null)
-            {
-                return false;
-            }
-
-            // Verify the signature
-            var signature = Convert.FromBase64String(drawResultToVerify.Signature!);
-            return rsa.VerifyData(
-                System.Text.Encoding.UTF8.GetBytes(jsonToVerify),
-                signature,
-                HashAlgorithmName.SHA256,
-                RSASignaturePadding.Pkcs1);
+            return ResultSigner.VerifySignature(
+                drawResultToVerify.Results,
+                drawResultToVerify.Signature!,
+                drawResultToVerify.Certificate!);
         }
         catch
         {
